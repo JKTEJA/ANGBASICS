@@ -1,0 +1,38 @@
+<p style="background-color: chartreuse;">conditional </p>
+<p *ngIf="courses.length>0" >
+    eligible to take the courses
+</p>
+<p *ngIf="age>18; else a2">
+    eligible for voting
+</p>
+<ng-template #a2>
+   not eligible for voting
+</ng-template>
+
+<p [hidden]="age<18">
+    eligible age
+</p>
+<p [hidden]="age>18">
+    not eligible age
+</p>
+<div *ngFor="let n of courses">
+    {{n}}
+</div>
+<select>
+    <option>choose your courses</option>
+    <option *ngFor="let n of courses">{{n}}</option>
+</select>
+
+ <ul class="nav nav-pills">
+    <li class="nav-item" [class.active]="view==='A1' ">
+      <a  (click)="view='A1'">home</a> &nbsp; &nbsp;
+    </li>
+    <li class="nav-item" [class.active]="view==='A2' ">
+      <a  (click)="view='A2'">about</a>
+    </li>
+   
+  </ul> 
+  <div [ngSwitch]="view">
+     <div *ngSwitchCase="'A1'">HOME page</div>
+     <div *ngSwitchCase="'A2'">ABOUT page</div> 
+  </div>

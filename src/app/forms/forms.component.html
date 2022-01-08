@@ -1,0 +1,42 @@
+<!-- <h2>one way data byinding</h2>
+<form #user="ngForm">
+    <label>fullname</label>
+    <input ngModel type="text" class="form-control"name="std">
+    <label>password</label>
+    <input ngModel type="password" class="form-control" name="pwd"><br>
+    <input type="submit" value="submit" class="btn btn-secondary">
+</form>
+{{user.value | json}} -->
+<br><br><br>
+<h2>two way data byinding</h2>
+<form #user="ngForm" (ngSubmit)="j1()">
+    <div>
+    <label for="exmpleInputName">fullname</label>
+    <input #v="ngModel" [(ngModel)]="d2.name"  type="text" class="form-control" name="std" required>
+    <small class="text-danger" [class.d-none]="v.valid">please enter your name</small>
+</div> 
+<div>
+    <label>email</label>
+    <input #name="ngModel" [(ngModel)]="d2.email" type="text" class="form-control" name="email"><br>
+</div>
+ <div>
+    <label>password</label>
+    <input #name="ngModel" [(ngModel)]="d2.password" type="password" class="form-control" name="pwd"><br>
+   
+</div>
+<div>
+    <select (change)=v1(courses.values) [(ngModel)]="d2.courses" #n1="ngModel" name="courses" required>
+        <option value="default">choose your courses</option>
+        <option *ngFor="let n of courses">
+            {{n}}
+</option>
+
+    </select>
+    <small [class.d-none]="n1.valid">please enter the courses</small>
+</div><br>
+<div>
+    <input type="submit" value="submit" class="btn btn-primary">
+</div>
+
+</form><br>
+{{user.value | json}}
